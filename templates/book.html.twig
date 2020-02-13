@@ -1,18 +1,25 @@
-{% extends 'collection.html.twig' %}
-{% block body_template_classes %}{{ parent() }} book{% endblock body_template_classes %}
+{% extends 'article.html.twig' %}
+{% set type = "book" %}
+{% set types = "sections" %}
+
+{% block template %}
+{{ parent() }}
+<!-- user/plugins/photon-{{ type }}/templates/{{ type }}.html.twig -->
+{% endblock %}
+{% block body_template_classes %}{{ parent() }} {{ type }}{% endblock body_template_classes %}
 
 
+{% set sections = page.collection %}
 
-{% block list -%}
+{# TODO this is a copy from article - remove #}
+{% block collection %}
+    {% for article in sections %}
 
-{% set options = { items: {'@page.descendants': '/book' }, 'limit': 0, 'order': {'by': 'date', 'dir': 'desc'}, 'pagination': true } -%}
-{% set book_collection = page.parent.children %}
-{% set book_collection = page.collection( options ) %}
-  <p>book pages: {{ book_collection.count }}</p>
-  {% for p in book_collection -%}
-    {% if not (p.url == page.url) -%}
-    {% include "_articles/article.html.twig" with { 'page': p } %}
+      {# %  if article.routable == true and article.visible == true  % #}
+        {% include ["_articles/#{ article.template }-excerpt.html.twig", "_articles/article-excerpt.html.twig"] with { 'article': article } %}
+      {# %  endif  % #}
+    {% endfor %}
 
-    {% endif %}
-  {% endfor -%}
-{% endblock list -%}
+  
+
+{% endblock collection %}
