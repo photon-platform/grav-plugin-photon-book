@@ -80,16 +80,21 @@ class PhotonBookPlugin extends Plugin
       $assets = 		$this->grav['assets'];
 
       // only load the vars if this datatype page
-      if ($page->template() == 'Book')
+      if ($page->template() == 'book')
       {
 
         // scripts
-        $js = 'plugin://photon-book/assets/book.js';
-        $assets->addJs($js);
-
         // styles
-        $css = 'plugin://photon-book/assets/book.css';
-        $assets->addCss($css);
+        if ($this->config->get('plugins.photon-book.built_in_css')) {
+          $css = 'plugin://photon-book/assets/book.css';
+          $assets->addCss($css, 100, false, 'photon-plugins' );
+        }
+
+        // scripts
+        if ($this->config->get('plugins.photon-book.built_in_js')) {
+          $js = 'plugin://photon-book/assets/book.js';
+          $assets->addJs($js, 100, false, 'defer', 'photon-plugins' );
+        }
 
       }
     }

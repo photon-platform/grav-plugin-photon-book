@@ -1,25 +1,24 @@
-{% extends 'article.html.twig' %}
-{% set type = "book" %}
-{% set types = "sections" %}
+{% macro place_article(article) %}
+  {% include ["_articles/#{ article.template }.html.twig", "_articles/article.html.twig"] with { 'article': article } %}
+  {% for child in article.collection %}
+    {{ _self.place_article(child) }}
+  {% endfor %}
+{% endmacro -%}
+<!DOCTYPE html>
+<html lang="en">
+<!-- params: {{ grav.uri.params() }} -->
+<!-- query: {{ grav.uri.query() }} -->
 
-{% block template %}
-{{ parent() }}
-<!-- user/plugins/photon-{{ type }}/templates/{{ type }}.html.twig -->
-{% endblock %}
-{% block body_template_classes %}{{ parent() }} {{ type }}{% endblock body_template_classes %}
+{% include 'book-head.html.twig' %}
 
+  <body class="{% block body_template_classes %}book {% endblock body_template_classes %}{% if page.header.body_classes %} {{ page.header.body_classes }}{% endif %}">
 
-{% set sections = page.collection %}
+    {{ _self.place_article(page.find('/elements')) }}
+    
+    {% block bottom %}
+    {{- assets.js('bottom') -}}
+    {% endblock %}
 
-{# TODO this is a copy from article - remove #}
-{% block collection %}
-    {% for article in sections %}
+  </body>
+</html>
 
-      {# %  if article.routable == true and article.visible == true  % #}
-        {% include ["_articles/#{ article.template }-excerpt.html.twig", "_articles/article-excerpt.html.twig"] with { 'article': article } %}
-      {# %  endif  % #}
-    {% endfor %}
-
-  
-
-{% endblock collection %}

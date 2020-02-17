@@ -1,0 +1,329 @@
+@charset "UTF-8";
+body.book {
+  display: block;
+}
+body.book article {
+  page-break-before: always;
+  width: 6in;
+  padding: var(--fitz-2);
+  margin: 0 auto;
+  margin-top: var(--fitz);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  display: block;
+}
+body.book article > * {
+  margin-bottom: var(--fitz);
+}
+body.book article > figure {
+  max-height: 70vh;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-content: stretch;
+  align-items: stretch;
+}
+body.book article > figure > img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: center;
+  flex: 1;
+}
+body.book article > figure > figcaption {
+  text-align: center;
+}
+body.book article > figure:empty {
+  display: none;
+}
+body.book article > header {
+  align-items: center;
+}
+body.book article > header > * {
+  margin: var(--fitz);
+}
+body.book article > header > h1 {
+  text-align: left;
+  line-height: 1;
+  text-align: center;
+}
+body.book article > header > h2 {
+  font-variant: normal;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+body.book article > header > nav {
+  padding: 0;
+  text-align: left;
+}
+body.book article > header > nav .prev, body.book article > header > nav .next {
+  display: none;
+}
+body.book article > header > nav a {
+  padding: 0;
+}
+body.book article > header > nav a::after {
+  content: "›";
+  padding: 0 0.25em;
+}
+body.book article > header > time {
+  font-size: 0.6em;
+  padding-top: 0.5em;
+}
+body.book article > .content {
+  display: block;
+  max-width: var(--col-3);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  widows: 2;
+  orphans: 2;
+}
+body.book article > .content > * {
+  margin: var(--fitz);
+  widows: 2;
+  orphans: 2;
+}
+body.book article > .content > *:last-child {
+  margin-bottom: 0;
+}
+body.book article > .content > .summary {
+  padding: var(--fitz);
+}
+body.book article > .content a {
+  display: inline;
+}
+body.book article > .content > ul, body.book article > .content ol {
+  margin: 2em;
+}
+body.book article > .content > blockquote {
+  padding: var(--fitz-2);
+  border-left: var(--fitz-2) solid var(--color-1-light);
+  line-height: 1.7;
+}
+body.book article > .content > blockquote > blockquote {
+  font-style: italic;
+  list-style-type: square;
+  padding-top: 0.5em;
+  font-size: 0.9em;
+}
+body.book article > .content > blockquote > ul {
+  font-style: italic;
+  list-style-type: square;
+  padding-top: 0.5em;
+  font-size: 0.9em;
+}
+body.book article > footer {
+  padding: 0;
+  padding-top: var(--fitz-2);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+body.book article > footer > aside {
+  min-width: 10em;
+}
+body.book article > footer > aside ul, body.book article > footer > aside li {
+  margin: 0;
+}
+body.book article > footer > aside ul h3, body.book article > footer > aside li h3 {
+  font-size: 1em;
+}
+body.book article > footer > aside.article-categories a {
+  text-transform: uppercase;
+}
+body.book article > footer > aside.article-tags a {
+  font-style: italic;
+}
+body.book article > footer > aside.article-share {
+  display: none;
+}
+body.book article > footer > nav {
+  align-content: flex-end;
+  flex-flow: row;
+}
+body.book article > aside {
+  flex-flow: row wrap;
+}
+body.book article > aside > h2 {
+  display: none;
+}
+body.book article > aside > a {
+  padding: 0.2em;
+}
+body.book article > .data {
+  grid-area: data;
+}
+body.book article > .data h1, body.book article > .data table {
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
+}
+body.book article > .data table table {
+  border-left: 0.1em solid var(--color-fg);
+}
+body.book article > .data h1 {
+  text-decoration: underline;
+}
+body.book article > .data th, body.book article > .data td {
+  text-align: center;
+  width: auto;
+  vertical-align: middle;
+  padding-right: 1em;
+  padding-left: 1em;
+  margin: 0;
+}
+body.book article > .data th {
+  font-size: 0.7em;
+  letter-spacing: 0.25em;
+  padding-right: 0.5em;
+  text-transform: uppercase;
+  text-align: right;
+}
+body.book article > .data td {
+  text-align: left;
+}
+body.book article > .gallery {
+  grid-area: gallery;
+  background: #000;
+  display: grid;
+  grid-template-areas: " list ";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 0.5em;
+  padding: 0.5em;
+}
+body.book article > .gallery > .panel {
+  grid-area: panel;
+  display: none;
+  background: white;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+body.book article > .gallery > .list {
+  grid-area: list;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc( var(--col)/2 ));
+  grid-auto-flow: row;
+  grid-gap: 0.5em;
+  height: 100%;
+  min-height: 5em;
+  justify-content: center;
+  align-items: flex-start;
+}
+body.book article > .gallery > .list > figure {
+  background: white;
+  padding: var(--fitz);
+  overflow: hidden;
+  text-align: center;
+  height: 100%;
+  min-height: 5em;
+}
+body.book article > .gallery > .list > figure > img {
+  height: 100%;
+  min-height: 5em;
+  object-fit: cover;
+  object-position: center;
+}
+body.book article > .gallery > .list > figure > figcaption {
+  text-align: center;
+}
+body.book article > .gallery.modal {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  grid-template-areas: " panel " " list ";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 10em;
+}
+body.book article > .gallery.modal > .panel {
+  display: block;
+}
+body.book article > .gallery.modal > .list {
+  width: 100%;
+  height: 100%;
+  min-height: 5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1em, 1fr));
+}
+body.book article > .gallery.modal > .list > figure {
+  width: 100%;
+  height: 100%;
+}
+body.book article > .gallery.modal > .list > figure > img {
+  width: 100%;
+}
+body.book article .sibling {
+  grid-area: sibling;
+  position: relative;
+  font-size: 1em;
+  width: 100%;
+  max-width: var(--col-3);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+body.book article .sibling > * {
+  width: 100%;
+}
+body.book article .sibling > div {
+  display: flex;
+  flex-flow: row;
+}
+body.book article .sibling > div.prev {
+  justify-content: flex-start;
+}
+body.book article .sibling > div.prev:before {
+  content: "·";
+  height: 100%;
+  padding-right: 0.5em;
+}
+body.book article .sibling > div.prev:after {
+  content: "";
+}
+body.book article .sibling > div.next {
+  justify-content: flex-end;
+}
+body.book article .sibling > div.next:after {
+  content: "·";
+  height: 100%;
+  padding-left: 0.5em;
+}
+body.book article .sibling > a {
+  display: flex;
+  flex-flow: row;
+}
+body.book article .sibling > a.prev {
+  justify-content: flex-start;
+}
+body.book article .sibling > a.prev:before {
+  content: "‹";
+  height: 100%;
+  padding-right: 0.5em;
+}
+body.book article .sibling > a.prev:after {
+  content: "";
+}
+body.book article .sibling > a.next {
+  justify-content: flex-end;
+}
+body.book article .sibling > a.next:after {
+  content: "›";
+  height: 100%;
+  padding-left: 0.5em;
+}
+body.book article .breadcrumbs a {
+  flex-flow: row;
+}
+
+/*# sourceMappingURL=book.css.map */

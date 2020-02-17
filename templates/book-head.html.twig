@@ -1,0 +1,52 @@
+{% set page_title = header.title ~ ' | ' ~ site.title %}
+{% set page_description = page.summary|striptags|rtrim|regex_replace( '/\n/', ' - ' ) %}
+{% set featured_image = base_url_absolute ~ page.url ~ '/' ~ page.header.figure.image %}
+{% block head %}
+
+<head>
+
+<title>{{ page_title }}</title>
+
+<link rel="icon"  href="/user/images/favicon.png">
+
+{% block stylesheets %}
+{% do assets.add('theme://css/photon.css', {priority:50, group:'photon'} ) %}
+{% do assets.add('theme://css/photon-child.css', {priority:40, group:'photon'} ) %}
+{% do assets.add('theme://css/photon-print.css', {priority:50, group:'photon-print'} ) %}
+{% endblock %}
+
+<!-- CSS photon -->
+{{ assets.css('photon') }}
+<!-- CSS photon-plugins -->
+{{ assets.css('photon-plugins') }}
+<!-- CSS photon-print -->
+{{ assets.css('photon-print') }}
+<!-- CSS  -->
+{{ assets.css() }}
+
+<!-- CSS fonts -->
+{% block css_fonts %}
+{% include '_site/fonts.html.twig'  %}
+{% endblock css_fonts %}
+
+<!-- CSS vars -->
+{% block css_vars %}
+{% include '_site/css_vars.html.twig'   %}
+{% endblock css_vars %}
+
+{% block javascripts %}
+{%- do assets.addJs('theme://js/article.js',
+  {'priority':200, 'pipeline':false, 'loading':'defer', 'group':'photon' }) %}
+{%- do assets.addJs('theme://js/showcase.js',
+  {'priority':300, 'pipeline':false, 'loading':'defer', 'group':'photon' }) %}
+{% endblock javascripts %}
+
+<!-- JS -->
+{{ assets.js() }}
+<!-- JS photon -->
+{{ assets.js('photon') }}
+<!-- JS photon-plugins -->
+{{ assets.js('photon-plugins') }}
+
+</head>
+{% endblock head %}
