@@ -9,7 +9,7 @@ body.book article {
   margin: 0 auto;
   margin-top: var(--fitz);
   color: var(--color-fg);
-  background: var(--color-bg);
+  background: white;
   display: block;
 }
 body.book article > * {
@@ -119,6 +119,7 @@ body.book article > .content > blockquote > ul {
   font-size: 0.9em;
 }
 body.book article > footer {
+  display: none;
   padding: 0;
   padding-top: var(--fitz-2);
   display: flex;
@@ -155,38 +156,6 @@ body.book article > aside > h2 {
 }
 body.book article > aside > a {
   padding: 0.2em;
-}
-body.book article > .data {
-  grid-area: data;
-}
-body.book article > .data h1, body.book article > .data table {
-  text-align: center;
-  width: auto;
-  margin: 0 auto;
-}
-body.book article > .data table table {
-  border-left: 0.1em solid var(--color-fg);
-}
-body.book article > .data h1 {
-  text-decoration: underline;
-}
-body.book article > .data th, body.book article > .data td {
-  text-align: center;
-  width: auto;
-  vertical-align: middle;
-  padding-right: 1em;
-  padding-left: 1em;
-  margin: 0;
-}
-body.book article > .data th {
-  font-size: 0.7em;
-  letter-spacing: 0.25em;
-  padding-right: 0.5em;
-  text-transform: uppercase;
-  text-align: right;
-}
-body.book article > .data td {
-  text-align: left;
 }
 body.book article > .gallery {
   grid-area: gallery;
@@ -262,68 +231,6 @@ body.book article > .gallery.modal > .list > figure {
 }
 body.book article > .gallery.modal > .list > figure > img {
   width: 100%;
-}
-body.book article .sibling {
-  grid-area: sibling;
-  position: relative;
-  font-size: 1em;
-  width: 100%;
-  max-width: var(--col-3);
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-}
-body.book article .sibling > * {
-  width: 100%;
-}
-body.book article .sibling > div {
-  display: flex;
-  flex-flow: row;
-}
-body.book article .sibling > div.prev {
-  justify-content: flex-start;
-}
-body.book article .sibling > div.prev:before {
-  content: "·";
-  height: 100%;
-  padding-right: 0.5em;
-}
-body.book article .sibling > div.prev:after {
-  content: "";
-}
-body.book article .sibling > div.next {
-  justify-content: flex-end;
-}
-body.book article .sibling > div.next:after {
-  content: "·";
-  height: 100%;
-  padding-left: 0.5em;
-}
-body.book article .sibling > a {
-  display: flex;
-  flex-flow: row;
-}
-body.book article .sibling > a.prev {
-  justify-content: flex-start;
-}
-body.book article .sibling > a.prev:before {
-  content: "‹";
-  height: 100%;
-  padding-right: 0.5em;
-}
-body.book article .sibling > a.prev:after {
-  content: "";
-}
-body.book article .sibling > a.next {
-  justify-content: flex-end;
-}
-body.book article .sibling > a.next:after {
-  content: "›";
-  height: 100%;
-  padding-left: 0.5em;
-}
-body.book article .breadcrumbs a {
-  flex-flow: row;
 }
 
 /*# sourceMappingURL=book.css.map */
