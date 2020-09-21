@@ -22,6 +22,7 @@ body.book {
     }
 
     > nav.context {
+      display: none;
     }
     
     > figure {
@@ -159,12 +160,12 @@ body.book {
     }
 
     > footer {
+      
       display: none;
       
       padding: 0;
       padding-top: var(--fitz-2);
 
-      display: flex;
       flex-flow: row wrap;
       justify-content: space-around;
 

@@ -15,6 +15,9 @@ body.book article {
 body.book article > * {
   margin-bottom: var(--fitz);
 }
+body.book article > nav.context {
+  display: none;
+}
 body.book article > figure {
   max-height: 70vh;
   padding: 0;
@@ -122,7 +125,6 @@ body.book article > footer {
   display: none;
   padding: 0;
   padding-top: var(--fitz-2);
-  display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
 }
