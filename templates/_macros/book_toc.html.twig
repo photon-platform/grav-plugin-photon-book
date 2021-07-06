@@ -1,0 +1,12 @@
+{% macro renderToc(article, name = 'content') %}
+{%   import _self as this %}
+{%   set articles=article.collection(name) %}
+      <ul class="toc">
+{%   for item in articles %}
+        <li>
+          <p><a href="#{{ item.url|trim('/')|replace({'/':'-'}) }}" >{{ item.menu }}</a></p>
+{{    this.renderToc(item)  }}
+        </li>
+{%   endfor %}
+      </ul>
+{% endmacro %}}

@@ -7,10 +7,11 @@ body.book {
   article {
     page-break-before: always;
 
-    width: 6in;
-    padding: var(--fitz-2);
-    margin: 0 auto;
-    margin-top: var(--fitz);
+    // width: 6in;
+    width: 100%;
+    padding: 0;
+    margin: 0; 
+    // margin-top: var(--fitz);
 
     color: var(--color-fg);
     background: white;
@@ -22,11 +23,10 @@ body.book {
     }
 
     > nav.context {
-      display: none;
+      // display: none;
     }
     
     > figure {
-      max-height: 70vh;
 
       padding: 0;
 
@@ -40,6 +40,7 @@ body.book {
       > img {
         width: 100%;
         height: 100%;
+        max-height: 30vh;
         margin: 0 auto;
 
         object-fit: contain;
@@ -129,7 +130,8 @@ body.book {
       }
 
       > .summary {
-        padding: var(--fitz);
+        padding: var(--fitz-2);
+        text-align: center;
       }
 
       a {
@@ -159,9 +161,33 @@ body.book {
       }
     }
 
+    > .book_collection {
+      text-align: center;
+      > header {
+        padding: var(--fitz-2);
+
+        text-transform: uppercase;
+        font-size: .7em;
+        letter-spacing: .5em;
+        margin-left: .5em;
+      }
+      > div {
+        padding: var(--fitz);
+        h2 {
+          font-variant: normal;
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 0.9em;
+          letter-spacing: 0.1em;
+          text-align: center;
+        }
+      }
+
+    }
+
     > footer {
       
-      display: none;
+      // display: none;
       
       padding: 0;
       padding-top: var(--fitz-2);
@@ -273,47 +299,11 @@ body.book {
           > figcaption {
             text-align: center;
           }
-
-        }
-      }
-
-      &.modal {
-        position: fixed;
-        // background: black;
-        z-index: 10;
-
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        grid-template-areas:
-          " panel "
-          " list ";
-        grid-template-columns:   1fr;
-        grid-template-rows:  1fr 10em;
-
-        > .panel {
-          display: block;
-        }
-
-        > .list {
-          width: 100%;
-          height: 100%;
-          min-height: 5em;
-          display: grid;
-          grid-template-columns: repeat( auto-fit, minmax(1em, 1fr) );
-          // grid-template-columns: auto;
-          // grid-auto-flow: row;
-          > figure {
-            width: 100%;
-            height: 100%;
-            > img {
-              width: 100%;
-            }
-          }
         }
       }
     }
   }
 }
+
+
+@import 'book-print';

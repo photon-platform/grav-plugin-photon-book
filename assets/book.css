@@ -4,10 +4,9 @@ body.book {
 }
 body.book article {
   page-break-before: always;
-  width: 6in;
-  padding: var(--fitz-2);
-  margin: 0 auto;
-  margin-top: var(--fitz);
+  width: 100%;
+  padding: 0;
+  margin: 0;
   color: var(--color-fg);
   background: white;
   display: block;
@@ -15,11 +14,7 @@ body.book article {
 body.book article > * {
   margin-bottom: var(--fitz);
 }
-body.book article > nav.context {
-  display: none;
-}
 body.book article > figure {
-  max-height: 70vh;
   padding: 0;
   overflow: hidden;
   text-align: center;
@@ -30,6 +25,7 @@ body.book article > figure {
 body.book article > figure > img {
   width: 100%;
   height: 100%;
+  max-height: 30vh;
   margin: 0 auto;
   object-fit: contain;
   object-position: center;
@@ -96,7 +92,8 @@ body.book article > .content > *:last-child {
   margin-bottom: 0;
 }
 body.book article > .content > .summary {
-  padding: var(--fitz);
+  padding: var(--fitz-2);
+  text-align: center;
 }
 body.book article > .content a {
   display: inline;
@@ -121,8 +118,28 @@ body.book article > .content > blockquote > ul {
   padding-top: 0.5em;
   font-size: 0.9em;
 }
+body.book article > .book_collection {
+  text-align: center;
+}
+body.book article > .book_collection > header {
+  padding: var(--fitz-2);
+  text-transform: uppercase;
+  font-size: 0.7em;
+  letter-spacing: 0.5em;
+  margin-left: 0.5em;
+}
+body.book article > .book_collection > div {
+  padding: var(--fitz);
+}
+body.book article > .book_collection > div h2 {
+  font-variant: normal;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
 body.book article > footer {
-  display: none;
   padding: 0;
   padding-top: var(--fitz-2);
   flex-flow: row wrap;
@@ -206,33 +223,20 @@ body.book article > .gallery > .list > figure > img {
 body.book article > .gallery > .list > figure > figcaption {
   text-align: center;
 }
-body.book article > .gallery.modal {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  grid-template-areas: " panel " " list ";
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 10em;
+
+@page {
+  size: 6in 9in;
+  margin: 1in;
+  @top-center {}
+  @bottom-center {}
 }
-body.book article > .gallery.modal > .panel {
-  display: block;
-}
-body.book article > .gallery.modal > .list {
-  width: 100%;
-  height: 100%;
-  min-height: 5em;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1em, 1fr));
-}
-body.book article > .gallery.modal > .list > figure {
-  width: 100%;
-  height: 100%;
-}
-body.book article > .gallery.modal > .list > figure > img {
-  width: 100%;
+@media print {
+  body > main {
+    display: block;
+  }
+  body > main .collection {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=book.css.map */

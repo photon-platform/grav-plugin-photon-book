@@ -1,0 +1,14 @@
+    <article id="{{ article.url|trim('/')|replace({'/':'-'}) }}" class="{{ article.template }}" >
+{% include "_articles/_block/booksection_nav.html.twig" with { 'article': article } %}
+{% include "_articles/_block/booksection_header.html.twig" with { 'article': article } %}
+{% include "_articles/_block/booksection_figure.html.twig" with { 'article': article } %}
+{% include "_articles/_block/booksection_main.html.twig" with { 'article': article } %}
+{# {% include "_articles/_block/booksection_footer.html.twig" with { 'article': article } %} #}
+{% include "_articles/_block/booksection_gallery.html.twig" with { 'article': article } %}
+{% if config.system.debugger.enabled %}
+        <!-- user/themes/photon/templates/_articles/_block/booksection.html.twig -->
+{% endif %}
+{%       if article.header.content.items %}
+  {%         include "_articles/_block/booksection_collection.html.twig" with { 'article': article } %}
+{%       endif %}
+    </article>

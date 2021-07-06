@@ -1,0 +1,22 @@
+{#
+Original Code from breadcrumbs.plugin
+- still need it for breadcrumbs.get
+#}
+{# {% set breadcrumbs_config = config.plugins['photon-breadcrumbs'] %} #}
+{# {% set crumbs = breadcrumbs.getFromArticle( article ) %} #}
+          {# $article = $article->parent(); #}
+          {# while ($article && !$article->root()) { #}
+              {# $hierarchy[$article->url()] = $article; #}
+              {# $article = $article->parent(); #}
+          {# } #}
+{# {% if breadcrumbs_config.enabled %} #}
+            <div class="breadcrumbs">
+{% set parent = article.parent %}
+              <a href="#{{ parent.url|trim('/')|replace({'/':'-'}) }}">{{ parent.menu }}</a>
+{# {%   if crumbs %} #}
+{# {%     for crumb in crumbs %} #}
+{# [> <a href="#{{ crumb.url|trim('/')|replace({'/':'-'}) }}">{{ crumb.menu }}</a> <] #}
+{# {%     endfor %} #}
+{# {%   endif %} #}
+            </div>
+{# {% endif %} #}

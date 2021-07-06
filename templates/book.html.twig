@@ -1,19 +1,37 @@
+{% import "_macros/book_toc.html.twig" as toclist %}
 {% macro place_article(article) %}
-  {% include ["_articles/#{ article.template }.html.twig", "_articles/article.html.twig"] with { 'article': article } %}
-  {% for child in article.collection %}
-    {{ _self.place_article(child) }}
-  {% endfor %}
+{% include "_articles/booksection.html.twig" with { 'article': article } %}
+{% for child in article.collection %}
+{{ _self.place_article(child) }}
+{% endfor %}
 {% endmacro -%}
 <!DOCTYPE html>
 <html lang="en">
 <!-- params: {{ grav.uri.params() }} -->
 <!-- query: {{ grav.uri.query() }} -->
 
+{% set bookroot = page.find(page.header.book.source) %}
 {% include 'book-head.html.twig' %}
 
   <body class="{% block body_template_classes %}book {% endblock body_template_classes %}{% if page.header.body_classes %} {{ page.header.body_classes }}{% endif %}">
+    <article id="book_titlepage">
+      <header>
+        <h1>{{ bookroot.title }}</h1>
+      </header>
+    </article>
+    <article id="book_copyright">
+      <header>
+        <h1>copyright</h1>
+      </header>
+    </article>
+    <article id="book_toc">
+      <header>
+        <h1>Table of Contents</h1>
+{{  toclist.renderToc(bookroot)  }}
+      </header>
+    </article>
 
-    {{ _self.place_article(page.find('/elements')) }}
+    {{ _self.place_article(bookroot) }}
     
     {% block bottom %}
     {{- assets.js('bottom') -}}

@@ -1,0 +1,38 @@
+{% macro render(article, name) %}
+{% if name=='' %}
+{%   set articles=article.collection('content') %}
+{%   set articles_details=article.header.content %}
+{%   set name = "default" %}
+{% else %}
+{%    set articles=article.collection(name) %}
+{%    set articles_details=attribute(article.header, name) %}
+{# {{ debug('name: ' ~ name) }} #}
+{# {{ dump(article['show_gallery']) }} #}
+{% endif %}
+      <section class="book_collection">
+        <header>
+          <h1>{{ articles_details.title }}</h1>
+          {# <nav> #}
+{# {% set toggle_id = name ~ '-expand-toggle' %} #}
+            {# <input class="expand" type="checkbox" id="{{ toggle_id }}" > #}
+            {# <label for="{{ toggle_id }}" ></label> #}
+          {# </nav> #}
+        </header>
+{% for item in articles %}
+{%   if item.url != article.url  %}
+        <div>
+          <a href="#{{ item.url|trim('/')|replace({'/':'-'}) }}">
+          <header>
+{# {% include '_articles/_block/breadcrumbs.html.twig' #}
+      {# with { 'article': article } %} #}
+            <h1>{{ item.title }}</h1>
+{% if item.header.subtitle %}
+            <h2>{{ item.header.subtitle }}</h2>
+{% endif %}
+          </header>
+          </a>
+        </div>
+{%   endif %}
+{% endfor %}
+      </section>
+{% endmacro %}}
