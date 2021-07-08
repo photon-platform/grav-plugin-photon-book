@@ -84,12 +84,8 @@ body.book article > .content {
   orphans: 2;
 }
 body.book article > .content > * {
-  margin: var(--fitz);
   widows: 2;
   orphans: 2;
-}
-body.book article > .content > *:last-child {
-  margin-bottom: 0;
 }
 body.book article > .content > .summary {
   padding: var(--fitz-2);
@@ -97,9 +93,6 @@ body.book article > .content > .summary {
 }
 body.book article > .content a {
   display: inline;
-}
-body.book article > .content > ul, body.book article > .content ol {
-  margin: 2em;
 }
 body.book article > .content > blockquote {
   padding: var(--fitz-2);

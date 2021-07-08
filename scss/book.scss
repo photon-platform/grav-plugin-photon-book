@@ -119,13 +119,13 @@ body.book {
       orphans: 2;
 
       > * {
-        margin: var(--fitz);
+        // margin: var(--fitz);
 
         widows: 2;
         orphans: 2;
 
         &:last-child {
-          margin-bottom: 0;
+          // margin-bottom: 0;
         }
       }
 
@@ -139,7 +139,7 @@ body.book {
       }
 
       > ul, ol {
-        margin: 2em;
+        // margin: 2em;
       }
 
       > blockquote {
