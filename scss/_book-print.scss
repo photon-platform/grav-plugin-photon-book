@@ -1,13 +1,32 @@
 @page {
-  size: 6in 9in;
-  margin: 1in;
+  size: A5;
+  margin: 10mm;
 
   @top-center {
-   // content: "photon";
+   content: "default";
   }
   
   @bottom-center {
-   // content: counter(page);
+   content: counter(page);
+  }
+  :first {
+    margin-top: 6cm;
+    margin-top: 0;
+    @top-center {
+     content: "first";
+    }
+  }
+  :left {
+    margin-left: 20mm;
+    @top-center {
+     content: "left";
+    }
+  }
+  :right {
+    margin-right: 20mm;
+    @top-center {
+     content: "right";
+    }
   }
 }
 
@@ -58,6 +77,7 @@
       display: block;
 
       article {
+        // min-height: none;
         // display: block;
 
         // margin: 0;

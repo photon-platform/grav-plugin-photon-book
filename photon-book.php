@@ -87,7 +87,7 @@ class PhotonBookPlugin extends Plugin
         // styles
         if ($this->config->get('plugins.photon-book.built_in_css')) {
           $css = 'plugin://photon-book/assets/book.css';
-          $assets->addCss($css, 100, false, 'photon-plugins' );
+          $assets->addCss($css, 100, false);
         }
 
         // scripts

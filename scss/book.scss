@@ -9,6 +9,7 @@ body.book {
 
     // width: 6in;
     width: 100%;
+    // min-height: 100vh;
     padding: 0;
     margin: 0; 
     // margin-top: var(--fitz);
@@ -23,6 +24,10 @@ body.book {
     }
 
     > nav.context {
+      .breadcrumbs a::before {
+        content: "";
+        padding: 0 ;
+      }
       // display: none;
     }
     
@@ -244,7 +249,7 @@ body.book {
     > .gallery {
       grid-area: gallery;
 
-      background: #000;
+      // background: #000;
 
       display: grid;
       grid-template-areas:

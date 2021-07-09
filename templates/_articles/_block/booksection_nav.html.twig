@@ -12,14 +12,14 @@
           <nav class="context">
             <div class="prev">
 {% if prevPage.url %}
-              <a href="#{{ prevPage.url|trim('/')|replace({'/':'-'}) }}" class="prev" title="{{ prevPage.title }}" >Prev</a>
+              <a href="#{{ prevPage.url|trim('/')|replace({'/':'-'}) }}" class="prev" title="{{ prevPage.title }}" ></a>
 {% endif %}
             </div>
 {% include '_articles/_block/booksection_breadcrumbs.html.twig' 
         with { 'article': article } %}
             <div class="next">
 {% if nextPage.url %}
-              <a href="#{{ nextPage.url|trim('/')|replace({'/':'-'}) }}" class="next" title="{{ nextPage.title }}" >Next</a>
+              <a href="#{{ nextPage.url|trim('/')|replace({'/':'-'}) }}" class="next" title="{{ nextPage.title }}" ></a>
 {% endif %}
             </div>
           </nav>

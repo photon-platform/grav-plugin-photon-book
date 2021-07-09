@@ -14,6 +14,10 @@ body.book article {
 body.book article > * {
   margin-bottom: var(--fitz);
 }
+body.book article > nav.context .breadcrumbs a::before {
+  content: "";
+  padding: 0;
+}
 body.book article > figure {
   padding: 0;
   overflow: hidden;
@@ -171,7 +175,6 @@ body.book article > aside > a {
 }
 body.book article > .gallery {
   grid-area: gallery;
-  background: #000;
   display: grid;
   grid-template-areas: " list ";
   grid-template-columns: 1fr;
@@ -218,10 +221,41 @@ body.book article > .gallery > .list > figure > figcaption {
 }
 
 @page {
-  size: 6in 9in;
-  margin: 1in;
-  @top-center {}
-  @bottom-center {}
+  size: A5;
+  margin: 10mm;
+  @top-center {
+    content: "default";
+  }
+  @bottom-center {
+    content: counter(page);
+  }
+  :first {
+    margin-top: 6cm;
+    margin-top: 0;
+  }
+  @top-center {
+    :first {
+      content: "first";
+    }
+  }
+
+  :left {
+    margin-left: 20mm;
+  }
+  @top-center {
+    :left {
+      content: "left";
+    }
+  }
+
+  :right {
+    margin-right: 20mm;
+  }
+  @top-center {
+    :right {
+      content: "right";
+    }
+  }
 }
 @media print {
   body > main {
